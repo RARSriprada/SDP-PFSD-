@@ -1,0 +1,27 @@
+{% extends 'base1.html' %}
+
+{% block content %}
+    <section id="about" style="background-color: #f0f0f0; padding: 20px;">
+        <div class="container" style="background-color: #cccccc; padding: 20px;">
+            <h2 style="font-size: 30px;">About Us</h2>
+            <div id="autoTypeText" style="font-family: 'Comic Sans MS', cursive; font-size: 20px;"></div>
+        </div>
+    </section>
+
+    <script>
+        // Autotyping effect
+        const text = "Welcome to PSB STORE, where every page tells a story and every reader finds their next adventure. Born from a passion for literature and a commitment to sharing that passion with the world, we curate a collection that sparks curiosity and ignites imaginations. At PSB, we're more than just a virtual bookshelf — we're a community of book lovers, united by our love for the written word. With a diverse selection ranging from timeless classics to contemporary bestsellers, we invite you to explore our virtual aisles and discover the perfect book to accompany you on your journey. Committed to excellence in every aspect of our service, we pride ourselves on providing exceptional customer experiences. From lightning-fast shipping to personalized recommendations, we're here to ensure your literary adventures are nothing short of extraordinary. As avid supporters of literacy and the literary arts, we're deeply engaged in our community, hosting author events, book clubs, and partnering with local organizations to promote reading and learning. Meet the faces behind the books — our passionate team dedicated to bringing you the best of literature and fostering a love of reading in every reader. Join us at PSB STORE, where stories come to life and readers become adventurers. Get lost in the pages, explore new worlds, and embark on literary journeys that will stay with you long after the final chapter. Welcome to our book-loving family.";
+        let index = 0;
+
+        function typeWriter() {
+            if (index < text.length) {
+                document.getElementById("autoTypeText").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, 20); // Adjust the typing speed here (milliseconds)
+            }
+        }
+
+        // Call the function to start autotyping
+        typeWriter();
+    </script>
+{% endblock %}

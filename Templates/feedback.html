@@ -1,0 +1,69 @@
+{% extends 'base1.html' %}
+
+{% block content %}
+    <section id="feedback" style="padding: 20px;">
+        <div class="container" style="background-color: #f0f0f0; padding: 20px; border-radius: 10px;">
+            <h2 style="font-size: 36px;">Feedback Form</h2>
+            <p>We value your feedback! Please provide your comments:</p>
+            <textarea id="feedbackText" rows="5" style="width: 100%; margin-bottom: 10px;"></textarea>
+            <p>How likely are you to recommend us to a friend?</p>
+            <div id="emojis" class="emoji-rating">
+                <span class="emoji" onclick="selectEmoji(1)">😡</span>
+                <span class="emoji" onclick="selectEmoji(2)">😕</span>
+                <span class="emoji" onclick="selectEmoji(3)">😐</span>
+                <span class="emoji" onclick="selectEmoji(4)">😊</span>
+                <span class="emoji" onclick="selectEmoji(5)">😍</span>
+            </div>
+            <button onclick="submitFeedback()">Submit</button>
+        </div>
+    </section>
+
+    <script>
+        let selectedEmoji = '';
+
+        function selectEmoji(emojiNum) {
+            selectedEmoji = ['😡', '😕', '😐', '😊', '😍'][emojiNum - 1];
+            const emojis = document.querySelectorAll('.emoji');
+            emojis.forEach((emoji, index) => {
+                if (index === emojiNum - 1) {
+                    emoji.classList.add('selected');
+                } else {
+                    emoji.classList.remove('selected');
+                }
+            });
+        }
+
+        function submitFeedback() {
+            const feedbackText = document.getElementById('feedbackText').value.trim();
+            if (feedbackText === '') {
+                alert('Please provide your feedback!');
+                return;
+            }
+            if (selectedEmoji === '') {
+                alert('Please select an emoji!');
+                return;
+            }
+            alert('Thank you for your feedback!\nFeedback: ' + feedbackText + '\nEmoji: ' + selectedEmoji);
+            // Here you can perform AJAX request to submit the feedback to the server
+        }
+    </script>
+
+    <style>
+        .emoji-rating {
+            font-size: 36px;
+            margin-top: 10px;
+        }
+
+        .emoji {
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .emoji.selected {
+            border: 2px solid #007bff;
+            border-radius: 50%;
+            padding: 5px;
+        }
+    </style>
+{% endblock %}
+

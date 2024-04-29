@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="background">
+
+    <div class="message-box">
+        <p style="font-family: 'Arial', sans-serif; font-size: 28px; color: #000000;"> <!-- Increased font size to 28px -->
+            Want to explore more?<br>
+            Please login or sign up now.<br>
+            <a href="{% url 'register' %}" style="color: #007bff; text-decoration: none;">Register Now</a>
+        </p>
+    </div>
+</div>
+<div class="content">
+    <!-- Your other content here -->
+</div>
+<style>
+    .background {
+        position: relative;
+        height: calc(100vh - 80px); /* Adjusted height to accommodate the navbar height */
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: flex-start; /* Align items to the top */
+        margin-top: 80px; /* Adjusted margin to create gap below the navbar */
+    }
+
+    .message-box {
+        width: 70%;
+        max-width: 500px;
+        padding: 18px;
+        border-radius: 10px;
+        text-align: center;
+        background-color: transparent; /* Transparent background */
+    }
+
+    .message-box p {
+        margin: 0;
+    }
+
+    .message-box a {
+        text-decoration: none;
+    }
+
+    .message-box a:hover {
+        text-decoration: underline;
+    }
+</style>
+{% endblock %}

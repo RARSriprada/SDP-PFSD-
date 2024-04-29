@@ -1,0 +1,87 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .cart-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 1;
+    }
+
+    .book-details {
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    form {
+        text-align: center;
+    }
+
+    label {
+        margin-right: 10px;
+    }
+
+    button {
+        margin-top: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    /* Highlight the price */
+    .highlight {
+        font-weight: bold;
+        color: #ff0000; /* Red color */
+    }
+
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        filter: brightness(90%) blur(50px);
+        z-index: -1;
+    }
+</style>
+
+<div class="background"></div>
+
+<div class="cart-container">
+    <h1>Cart</h1>
+
+    <div class="book-details">
+        <h2>Book Details:</h2>
+        <p>Title: {{ book_name }}</p>
+        <p>Author: {{ author_name }}</p>
+        <!-- Display the price -->
+
+    </div>
+
+    <div>
+        <h2>Payment Options:</h2>
+        <form action="{% url 'whereabouts' %}" method="post">
+            {% csrf_token %}
+
+            <button type="submit">Proceed to Payment</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

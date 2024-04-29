@@ -1,0 +1,106 @@
+<!-- upi_payment.html -->
+{% extends 'base1.html' %}
+{% load static %}
+{% block content %}
+<style>
+    /* Add your custom styles for the UPI payment page here */
+    .upi-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 255, 255, 0.8); /* Transparent white */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .upi-container h1 {
+        text-align: center;
+    }
+
+    .upi-container form {
+        text-align: center;
+    }
+
+    .upi-container label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .upi-container input[type="text"],
+    .upi-container input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .upi-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.3); /* Transparent white */
+    padding: 40px; /* Increased padding */
+    border-radius: 20px; /* Increased border radius */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Increased box shadow */
+    width: 80%; /* Make the container broader */
+    max-width: 600px; /* Limit maximum width */
+}
+
+.upi-container h1 {
+    text-align: center;
+    margin-bottom: 20px; /* Added margin to separate heading from form */
+    color: black; /* Set title color to black */
+}
+
+.upi-container form {
+    text-align: center;
+    color: black; /* Set form text color to black */
+}
+
+.upi-container label {
+    display: block;
+    margin-bottom: 10px;
+    color: black; /* Set label color to black */
+}
+
+.upi-container input[type="text"],
+.upi-container input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.upi-container button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upi-container button:hover {
+    background-color: #0056b3;
+}
+</style>
+
+<div class="upi-container">
+    <h1>UPI Payment</h1>
+    <form action=" {% url 'thank' %}" method="post">
+        {% csrf_token %}
+        <label for="upi_id">UPI ID:</label>
+        <input type="text" id="upi_id" name="upi_id" required><br>
+        <label for="phone_number">Phone Number:</label>
+        <input type="number" id="phone_number" name="phone_number" required><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <button type="submit">Proceed with Payment</button>
+    </form>
+</div>
+{% endblock %}
